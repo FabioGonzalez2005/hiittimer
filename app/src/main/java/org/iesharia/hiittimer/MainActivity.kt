@@ -17,6 +17,8 @@ import android.media.MediaPlayer
 import org.iesharia.hiittimer.ui.theme.HiittimerTheme
 
 class MainActivity : ComponentActivity() {
+    private var mediaPlayer: MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -28,6 +30,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer?.release()
     }
 }
 
