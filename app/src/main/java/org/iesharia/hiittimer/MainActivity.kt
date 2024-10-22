@@ -14,11 +14,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.media.MediaPlayer
+import androidx.compose.ui.platform.LocalContext
 import org.iesharia.hiittimer.ui.theme.HiittimerTheme
 
 class MainActivity : ComponentActivity() {
-    private var mediaPlayer: MediaPlayer? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -30,10 +29,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        mediaPlayer?.release()
     }
 }
 
@@ -254,6 +249,12 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     }
                 }
             }
+        }
+        val context = LocalContext.current
+        var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
+        mediaPlayer = MediaPlayer.create(context, R.raw.ejemplo)
+        LaunchedEffect(Unit) {
+            mediaPlayer?.start()
         }
     } else {
         Column(
