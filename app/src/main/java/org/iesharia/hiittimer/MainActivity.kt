@@ -249,13 +249,12 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     }
                 }
             }
-        }
-
-        val context = LocalContext.current
-        var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
-        mediaPlayer = MediaPlayer.create(context, R.raw.musica)
-        LaunchedEffect(Unit) {
-            mediaPlayer?.start()
+            val context = LocalContext.current
+            var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
+            mediaPlayer = MediaPlayer.create(context, R.raw.musica)
+            LaunchedEffect(Unit) {
+                mediaPlayer?.start()
+            }
         }
     } else {
         Column(
