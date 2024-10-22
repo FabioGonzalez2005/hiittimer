@@ -1,5 +1,5 @@
 package org.iesharia.hiittimer
-// HOLA
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import android.media.MediaPlayer
 import org.iesharia.hiittimer.ui.theme.HiittimerTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,6 +42,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
     var counter by remember { mutableStateOf<CounterDown?>(null) }
     var isResting by remember { mutableStateOf(false) }
     var isGetReady by remember { mutableStateOf(true) }
+
     val getReadyTime: Long = 10
 
     if (mostrarPantalla) {
