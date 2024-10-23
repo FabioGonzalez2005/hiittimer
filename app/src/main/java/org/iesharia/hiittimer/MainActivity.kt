@@ -32,6 +32,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
+
 @Composable
 fun MainMenu(modifier: Modifier = Modifier) {
     var sets by remember { mutableStateOf(3) }
@@ -43,6 +45,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
     var counter by remember { mutableStateOf<CounterDown?>(null) }
     var isResting by remember { mutableStateOf(false) }
     var isGetReady by remember { mutableStateOf(true) }
+    val context = LocalContext.current
 
     val getReadyTime: Long = 10
 
@@ -87,7 +90,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     mostrarPantalla = false
                     isGetReady = true
                     tiempoRestante = getReadyTime
-                    counter = CounterDown(getReadyTime.toInt()) { remainingTime ->
+                    counter = CounterDown(context, getReadyTime.toInt()) { remainingTime ->
                         tiempoRestante = remainingTime
                     }
                     counter?.start()
@@ -143,7 +146,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     counter?.cancel()
                     isGetReady = false
                     tiempoRestante = exerciseTime.toLong()
-                    counter = CounterDown(exerciseTime) { remainingTime ->
+                    counter = CounterDown(context, exerciseTime) { remainingTime ->
                         tiempoRestante = remainingTime
                     }
                     counter?.start()
@@ -214,7 +217,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     onClick = {
                         counter?.cancel()
                         tiempoRestante = exerciseTime.toLong()
-                        counter = CounterDown(exerciseTime) { remainingTime ->
+                        counter = CounterDown(context, exerciseTime) { remainingTime ->
                             tiempoRestante = remainingTime
                         }
                         counter?.start()
@@ -240,7 +243,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     if (sets > 0) {
                         isResting = true
                         tiempoRestante = restTime.toLong()
-                        counter = CounterDown(restTime) { remainingTime ->
+                        counter = CounterDown(context, restTime) { remainingTime ->
                             tiempoRestante = remainingTime
                         }
                         counter?.start()
@@ -249,9 +252,9 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     }
                 }
             }
-            val context = LocalContext.current
+
             var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
-            mediaPlayer = MediaPlayer.create(context, R.raw.musica)
+            mediaPlayer = MediaPlayer.create(context, R.raw.pitidocorto)
             LaunchedEffect(Unit) {
                 mediaPlayer?.start()
             }
@@ -318,7 +321,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     onClick = {
                         counter?.cancel()
                         tiempoRestante = restTime.toLong()
-                        counter = CounterDown(restTime) { remainingTime ->
+                        counter = CounterDown(context, restTime) { remainingTime ->
                             tiempoRestante = remainingTime
                         }
                         counter?.start()
@@ -340,7 +343,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 if (tiempoRestante <= 0) {
                     isResting = false
                     tiempoRestante = exerciseTime.toLong()
-                    counter = CounterDown(exerciseTime) { remainingTime ->
+                    counter = CounterDown(context, exerciseTime) { remainingTime ->
                         tiempoRestante = remainingTime
                     }
                     counter?.start()
