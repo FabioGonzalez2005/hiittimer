@@ -34,6 +34,7 @@ class MainActivity : ComponentActivity() {
 
 
 
+
 @Composable
 fun MainMenu(modifier: Modifier = Modifier) {
     var sets by remember { mutableStateOf(3) }
@@ -46,8 +47,17 @@ fun MainMenu(modifier: Modifier = Modifier) {
     var isResting by remember { mutableStateOf(false) }
     var isGetReady by remember { mutableStateOf(true) }
     val context = LocalContext.current
-
+    var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
     val getReadyTime: Long = 10
+
+    fun pararMusica() {
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+    LaunchedEffect(Unit) {
+        mediaPlayer = MediaPlayer.create(context, R.raw.musica)
+    }
 
     if (mostrarPantalla) {
         Column(
@@ -156,6 +166,12 @@ fun MainMenu(modifier: Modifier = Modifier) {
             }
         }
     } else if (!isResting) {
+        LaunchedEffect(isResting) {
+            if (!isResting) {
+                mediaPlayer?.start()
+            }
+        }
+
         Column(
             modifier = modifier
                 .fillMaxSize()
@@ -240,6 +256,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     isCounting = false
                     counter?.cancel()
                     sets--
+                    pararMusica()
                     if (sets > 0) {
                         isResting = true
                         tiempoRestante = restTime.toLong()
@@ -253,11 +270,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 }
             }
             }
-        var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
-        mediaPlayer = MediaPlayer.create(context, R.raw.musica)
-        LaunchedEffect(Unit) {
-            mediaPlayer?.start()
-        }
+
     } else {
         Column(
             modifier = modifier
@@ -348,6 +361,12 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     counter?.start()
                 }
             }
+
+        }
+        DisposableEffect(Unit) {
+            onDispose {
+                mediaPlayer?.release()
+            }
         }
     }
 }
@@ -359,6 +378,7 @@ fun TimeSelector(
     onIncrease: () -> Unit,
     onDecrease: () -> Unit,
 ) {
+
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = label)
         Row(
