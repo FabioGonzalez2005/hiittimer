@@ -252,12 +252,11 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     }
                 }
             }
-
-            var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
-            mediaPlayer = MediaPlayer.create(context, R.raw.pitidocorto)
-            LaunchedEffect(Unit) {
-                mediaPlayer?.start()
             }
+        var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
+        mediaPlayer = MediaPlayer.create(context, R.raw.musica)
+        LaunchedEffect(Unit) {
+            mediaPlayer?.start()
         }
     } else {
         Column(
