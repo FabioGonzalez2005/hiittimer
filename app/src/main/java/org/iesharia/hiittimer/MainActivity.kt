@@ -219,7 +219,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
                     modifier = Modifier
                         .weight(1f)
-                        .padding(8.dp)
+                        .padding(25.dp)
                 ) {
                     Text(
                         text = if (isCounting) "Pausar" else "Reanudar",
@@ -244,7 +244,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
                     modifier = Modifier
                         .weight(1f)
-                        .padding(8.dp)
+                        .padding(25.dp)
                 ) {
                     Text(
                         text = "Reiniciar",
@@ -321,7 +321,9 @@ fun MainMenu(modifier: Modifier = Modifier) {
                         }
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(25.dp)
                 ) {
                     Text(
                         text = if (isCounting) "Pausar" else "Reanudar",
@@ -344,7 +346,9 @@ fun MainMenu(modifier: Modifier = Modifier) {
                         isCounting = true
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(25.dp)
                 ) {
                     Text(
                         text = "Reiniciar",
