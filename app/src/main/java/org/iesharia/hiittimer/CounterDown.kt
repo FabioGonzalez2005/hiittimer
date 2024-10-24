@@ -9,14 +9,23 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
     private var counterState: Boolean = false
     private var tiempoRestante: Long = segundos * 1000L
     private var myCounter: CountDownTimer? = null
+    private var mediaPlayer: MediaPlayer? = null
+
+    init {
+        mediaPlayer = MediaPlayer.create(context, R.raw.pitidocorto)
+        mediaPlayer?.setOnCompletionListener {
+            it.release()
+            mediaPlayer = MediaPlayer.create(context, R.raw.pitidocorto)
+        }
+    }
 
     fun crearCounter(tiempo: Long) {
         myCounter = object : CountDownTimer(tiempo, 1000) {
-
             override fun onTick(millisUntilFinished: Long) {
                 tiempoRestante = millisUntilFinished
                 if (counterState) loquehacealhacertick(millisUntilFinished / 1000)
-                if (tiempoRestante == 3000L || tiempoRestante == 2000L || tiempoRestante == 1000L) {
+
+                if (tiempoRestante in 1800L..4300L) {
                     reproducirPitidoCorto()
                 }
             }
@@ -37,13 +46,12 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
     fun cancel() {
         counterState = false
         myCounter?.cancel()
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
     }
 
     private fun reproducirPitidoCorto() {
-        val mediaPlayer = MediaPlayer.create(context, R.raw.pitidocorto)
-        mediaPlayer.setOnCompletionListener {
-            it.release()
-        }
-        mediaPlayer.start()
+        mediaPlayer?.start()
     }
 }
+
