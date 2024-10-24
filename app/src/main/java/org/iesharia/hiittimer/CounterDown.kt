@@ -37,18 +37,18 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
         }
     }
 
-    fun start() {
-        counterState = true
-        crearCounter(tiempoRestante)
-        myCounter?.start()
-    }
-
-    fun cancel() {
-        counterState = false
-        myCounter?.cancel()
-        mediaPlayer?.stop()
-        mediaPlayer?.release()
-    }
+//    fun start() {
+//        counterState = true
+//        crearCounter(tiempoRestante)
+//        myCounter?.start()
+//    }
+//
+//    fun cancel() {
+//        counterState = false
+//        myCounter?.cancel()
+//        mediaPlayer?.stop()
+//        mediaPlayer?.release()
+//    }
 
     private fun reproducirPitidoCorto() {
         mediaPlayer?.start()
