@@ -187,8 +187,9 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 }
             }
         }
-        // Pantalla de descanso.
+        // Pantalla de trabajo.
     } else if (!isResting) {
+        //Iniciar música
         LaunchedEffect(isResting) {
             if (!isResting) {
                 mediaPlayer?.start()
@@ -229,6 +230,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(32.dp))
 
             Row {
+                // Boton de pausa
                 Button(
                     onClick = {
                         if (isCounting) {
@@ -277,7 +279,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     )
                 }
             }
-
+            // Comprobador si los sets terminaron
             LaunchedEffect(tiempoRestante) {
                 if (tiempoRestante <= 0) {
                     isCounting = false
@@ -297,7 +299,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 }
             }
         }
-
+        // Pantalla de descanso.
     } else {
         Column(
             modifier = modifier
@@ -333,6 +335,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(32.dp))
 
             Row {
+                // Boton de pausa
                 Button(
                     onClick = {
                         if (isCounting) {
@@ -394,6 +397,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
             }
 
         }
+        // Parar la música durante el descanso
         DisposableEffect(Unit) {
             onDispose {
                 mediaPlayer?.release()
@@ -402,6 +406,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
     }
 }
 
+//Seleccionador de tiempos (Los valores los determina el primer @Composable)
 @Composable
 fun TimeSelector(
     label: String,
@@ -409,6 +414,7 @@ fun TimeSelector(
     onIncrease: () -> Unit,
     onDecrease: () -> Unit,
 ) {
+    //Componentes de cada configurador de tiempos
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = label)
         Row(
