@@ -222,7 +222,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
                     modifier = Modifier
                         .weight(1f)
-                        .padding(25.dp)
+                        .padding(20.dp)
                 ) {
                     Text(
                         text = if (isCounting) "Pausar" else "Reanudar",
@@ -247,7 +247,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
                     modifier = Modifier
                         .weight(1f)
-                        .padding(25.dp)
+                        .padding(20.dp)
                 ) {
                     Text(
                         text = "Reiniciar",
@@ -326,7 +326,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
                     modifier = Modifier
                         .weight(1f)
-                        .padding(25.dp)
+                        .padding(20.dp)
                 ) {
                     Text(
                         text = if (isCounting) "Pausar" else "Reanudar",
@@ -351,7 +351,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
                     modifier = Modifier
                         .weight(1f)
-                        .padding(25.dp)
+                        .padding(20.dp)
                 ) {
                     Text(
                         text = "Reiniciar",
@@ -389,12 +389,6 @@ fun TimeSelector(
     onIncrease: () -> Unit,
     onDecrease: () -> Unit,
 ) {
-    Image(
-        painter = painterResource(id = R.drawable.fondogym),
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        alpha = 0.8F
-    )
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = label)
         Row(
