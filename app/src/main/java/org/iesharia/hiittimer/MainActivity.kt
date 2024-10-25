@@ -14,7 +14,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.media.MediaPlayer
+import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import org.iesharia.hiittimer.ui.theme.HiittimerTheme
 
 class MainActivity : ComponentActivity() {
@@ -386,7 +389,12 @@ fun TimeSelector(
     onIncrease: () -> Unit,
     onDecrease: () -> Unit,
 ) {
-
+    Image(
+        painter = painterResource(id = R.drawable.fondogym),
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        alpha = 0.8F
+    )
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = label)
         Row(
