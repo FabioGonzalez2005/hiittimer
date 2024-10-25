@@ -11,7 +11,9 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
     private var myCounter: CountDownTimer? = null
     private var mediaPlayer: MediaPlayer? = null
 
+    // Inicializador de la clase
     init {
+        // Creamos un MediaPlayer para reproducir un pitido corto al iniciar el temporizador
         mediaPlayer = MediaPlayer.create(context, R.raw.pitidocorto)
         mediaPlayer?.setOnCompletionListener {
             it.release()
@@ -19,6 +21,7 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
         }
     }
 
+    // Método para configurar un nuevo temporizador
     fun crearCounter(tiempo: Long) {
         myCounter = object : CountDownTimer(tiempo, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -26,10 +29,11 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
                 if (counterState) loquehacealhacertick(millisUntilFinished / 1000)
 
                 if (tiempoRestante in 1800L..4300L) {
-                    reproducirPitidoCorto()
+                    mediaPlayer?.start()
                 }
             }
 
+            // Método que se ejecuta cuando el temporizador llega a cero
             override fun onFinish() {
                 counterState = false
                 Log.i("dam2", "Temporizador finalizado")
@@ -37,12 +41,14 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
         }
     }
 
+    // Método para iniciar el temporizador
     fun start() {
         counterState = true
         crearCounter(tiempoRestante)
         myCounter?.start()
     }
 
+    // Método para cancelar el temporizador
     fun cancel() {
         counterState = false
         myCounter?.cancel()
@@ -50,8 +56,5 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
         mediaPlayer?.release()
     }
 
-    private fun reproducirPitidoCorto() {
-        mediaPlayer?.start()
-    }
 }
 
