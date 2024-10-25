@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 
 
 
-
+// Composable principal que gestiona el menú y la lógica del temporizador.
 @Composable
 fun MainMenu(modifier: Modifier = Modifier) {
     var sets by remember { mutableStateOf(3) }
@@ -53,15 +53,18 @@ fun MainMenu(modifier: Modifier = Modifier) {
     var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
     val getReadyTime: Long = 10
 
+    // Función para detener y liberar recursos del reproductor de música.
     fun pararMusica() {
         mediaPlayer?.stop()
         mediaPlayer?.release()
         mediaPlayer = null
     }
+    // Efecto que se ejecuta al iniciar el Composable para preparar el reproductor de música.
     LaunchedEffect(Unit) {
         mediaPlayer = MediaPlayer.create(context, R.raw.musica)
     }
 
+    // Pantalla principal de selección de tiempos y sets.
     if (mostrarPantalla) {
         Column(
             modifier = modifier
@@ -71,6 +74,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            // Selector para el número de sets.
             TimeSelector(
                 label = "Sets",
                 value = sets,
@@ -80,6 +84,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            // Selector para el tiempo de ejercicio.
             TimeSelector(
                 label = "Tiempo de ejercicio (segundos)",
                 value = exerciseTime,
@@ -89,6 +94,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            // Selector para el tiempo de descanso.
             TimeSelector(
                 label = "Tiempo de descanso (segundos)",
                 value = restTime,
@@ -98,6 +104,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(32.dp))
 
+            // Botón para iniciar el temporizador.
             Button(
                 onClick = {
                     mostrarPantalla = false
@@ -119,6 +126,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 )
             }
         }
+        // Pantalla de preparación.
     } else if (isGetReady) {
         Column(
             modifier = modifier
@@ -153,6 +161,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(32.dp))
 
+            // Efecto que inicia el conteo del tiempo de preparación.
             LaunchedEffect(tiempoRestante) {
                 if (tiempoRestante <= 0) {
                     isCounting = false
@@ -168,6 +177,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 }
             }
         }
+        // Pantalla de descanso.
     } else if (!isResting) {
         LaunchedEffect(isResting) {
             if (!isResting) {
