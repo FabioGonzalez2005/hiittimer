@@ -279,7 +279,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     )
                 }
             }
-            // Comprobador si los sets terminaron
+            // Efecto para bajar un set después de la pantalla de ejercicio y comenzar la pantalla de descanso.
             LaunchedEffect(tiempoRestante) {
                 if (tiempoRestante <= 0) {
                     isCounting = false
@@ -385,6 +385,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 }
             }
 
+            // Efecto que gestiona el cambio entre la pantalla de descanso y la pantalla de ejercicio.
             LaunchedEffect(tiempoRestante) {
                 if (tiempoRestante <= 0) {
                     isResting = false
@@ -406,7 +407,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
     }
 }
 
-//Seleccionador de tiempos (Los valores los determina el primer @Composable)
+// Composable que representa el selector de tiempo.
 @Composable
 fun TimeSelector(
     label: String,
