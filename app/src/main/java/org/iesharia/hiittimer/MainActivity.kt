@@ -205,6 +205,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 reproducirMusica()
                 Log.i("DAM", "Música iniciada")
             } else {
+                // Paramos música.
                 pararMusica()
                 Log.i("DAM", "Música parada")
             }
