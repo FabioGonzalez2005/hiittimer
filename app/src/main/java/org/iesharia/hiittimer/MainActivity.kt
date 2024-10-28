@@ -56,9 +56,12 @@ fun MainMenu(modifier: Modifier = Modifier) {
 
     fun reproducirMusica() {
         // Inicializa y empieza la música de ejercicio
-        val musicaPlayer = MediaPlayer.create(context, R.raw.musica)
-        musicaPlayer.isLooping = true
-        musicaPlayer.start()
+        if (mediaPlayer == null) { // Solo inicia si no está reproduciendo
+            mediaPlayer = MediaPlayer.create(context, R.raw.musica).apply {
+                isLooping = true
+                start()
+            }
+        }
     }
 
     // Función para detener y liberar recursos del reproductor de música.
@@ -144,6 +147,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
         }
         // Pantalla de preparación.
     } else if (isGetReady) {
+        pararMusica()
         Column(
             modifier = modifier
                 .fillMaxSize()
@@ -307,6 +311,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
         }
         // Pantalla de descanso.
     } else {
+        pararMusica()
         Column(
             modifier = modifier
                 .fillMaxSize()
