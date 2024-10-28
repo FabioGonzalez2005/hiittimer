@@ -18,6 +18,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import org.iesharia.hiittimer.ui.theme.HiittimerTheme
 
 class MainActivity : ComponentActivity() {
@@ -70,7 +71,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxSize()
         ){
             Image(
-                painter = painterResource(id = R.drawable.fondogym),
+                painter = painterResource(id = R.drawable.fondogym2),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 alpha = 0.8f,
@@ -420,7 +421,7 @@ fun TimeSelector(
     //Componentes de cada configurador de tiempos
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = label,
-        color = Color.White, fontSize = 20.sp)
+        color = Color.White, fontSize = 30.sp)
         Row(
             modifier = Modifier.padding(top = 8.dp),
             verticalAlignment = Alignment.CenterVertically
@@ -444,7 +445,9 @@ fun TimeSelector(
             Text(
                 text = value.toString(),
                 fontSize = 30.sp,
-                textAlign = TextAlign.Center
+                color = Color.White,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold
             )
 
             Spacer(modifier = Modifier.width(70.dp))
