@@ -37,8 +37,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-
 // Composable principal que gestiona el menú y la lógica del temporizador.
 @Composable
 fun MainMenu(modifier: Modifier = Modifier) {
@@ -98,21 +96,15 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     onIncrease = { sets++ },
                     onDecrease = { if (sets > 1) sets-- }
                 )
-
                 Spacer(modifier = Modifier.height(16.dp))
-
                 // Selector para el tiempo de ejercicio.
                 TimeSelector(
                     label = "Tiempo de ejercicio",
                     value = exerciseTime,
                     onIncrease = { exerciseTime += 5 },
                     onDecrease = { if (exerciseTime > 5) exerciseTime -= 5 },
-
-
                 )
-
                 Spacer(modifier = Modifier.height(16.dp))
-
                 // Selector para el tiempo de descanso.
                 TimeSelector(
                     label = "Tiempo de descanso",
@@ -120,9 +112,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     onIncrease = { restTime += 5 },
                     onDecrease = { if (restTime > 4) restTime -= 5 },
                 )
-
                 Spacer(modifier = Modifier.height(32.dp))
-
                 // Botón para iniciar el temporizador.
                 Button(
                     onClick = {
@@ -161,26 +151,20 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 fontSize = 30.sp,
                 color = Color.Black
             )
-
             Spacer(modifier = Modifier.height(16.dp))
-
             Text(
                 text = "${tiempoRestante}",
                 fontSize = 80.sp,
                 color = Color.Black
             )
-
             Spacer(modifier = Modifier.height(16.dp))
-
             Text(
                 text = "GET READY",
                 fontSize = 50.sp,
                 color = Color.White,
                 textAlign = TextAlign.Center
             )
-
             Spacer(modifier = Modifier.height(32.dp))
-
             // Efecto que inicia el conteo del tiempo de preparación.
             LaunchedEffect(tiempoRestante) {
                 if (tiempoRestante <= 0) {
@@ -210,7 +194,6 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 Log.i("DAM", "Música parada")
             }
         }
-
         Column(
             modifier = modifier
                 .fillMaxSize()
@@ -224,26 +207,20 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 fontSize = 30.sp,
                 color = Color.Black
             )
-
             Spacer(modifier = Modifier.height(16.dp))
-
             Text(
                 text = "${tiempoRestante}",
                 fontSize = 80.sp,
                 color = Color.Black
             )
-
             Spacer(modifier = Modifier.height(16.dp))
-
             Text(
                 text = "WORK",
                 fontSize = 50.sp,
                 color = Color.White,
                 textAlign = TextAlign.Center
             )
-
             Spacer(modifier = Modifier.height(32.dp))
-
             Row {
                 // Boton de pausa
                 Button(
@@ -268,9 +245,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
                         textAlign = TextAlign.Center
                     )
                 }
-
                 Spacer(modifier = Modifier.width(16.dp))
-
                 Button(
                     onClick = {
                         counter?.cancel()
@@ -330,26 +305,20 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 fontSize = 30.sp,
                 color = Color.Black
             )
-
             Spacer(modifier = Modifier.height(16.dp))
-
             Text(
                 text = "${tiempoRestante}",
                 fontSize = 80.sp,
                 color = Color.Black
             )
-
             Spacer(modifier = Modifier.height(16.dp))
-
             Text(
                 text = "REST",
                 fontSize = 50.sp,
                 color = Color.White,
                 textAlign = TextAlign.Center
             )
-
             Spacer(modifier = Modifier.height(32.dp))
-
             Row {
                 // Boton de pausa
                 Button(
@@ -412,7 +381,6 @@ fun MainMenu(modifier: Modifier = Modifier) {
                     counter?.start()
                 }
             }
-
         }
         // Parar la música durante el descanso
         DisposableEffect(Unit) {
@@ -422,7 +390,6 @@ fun MainMenu(modifier: Modifier = Modifier) {
         }
     }
 }
-
 // Composable que representa el selector de los tiempos.
 @Composable
 fun TimeSelector(
