@@ -147,7 +147,6 @@ fun MainMenu(modifier: Modifier = Modifier) {
         }
         // Pantalla de preparación.
     } else if (isGetReady) {
-        pararMusica()
         Column(
             modifier = modifier
                 .fillMaxSize()
@@ -199,10 +198,12 @@ fun MainMenu(modifier: Modifier = Modifier) {
         }
         // Pantalla de trabajo.
     } else if (!isResting) {
-        //Iniciar música
+        // Iniciar música solo cuando inicie la pantalla de ejercicio
         LaunchedEffect(isResting) {
             if (!isResting) {
                 reproducirMusica()
+            } else {
+                pararMusica()
             }
         }
 
