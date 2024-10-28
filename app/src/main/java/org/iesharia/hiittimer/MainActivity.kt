@@ -71,7 +71,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxSize()
         ){
             Image(
-                painter = painterResource(id = R.drawable.fondogym2),
+                painter = painterResource(id = R.drawable.fondogym4),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 alpha = 0.8f,
@@ -145,7 +145,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
             modifier = modifier
                 .fillMaxSize()
                 .padding(0.dp)
-                .background(Color(0xFFFFA726)),
+                .background(Color(0xA8A000FF)),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -203,7 +203,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
             modifier = modifier
                 .fillMaxSize()
                 .padding(0.dp)
-                .background(Color(0xFF00E676)),
+                .background(Color(0xD900E676)),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -308,7 +308,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
             modifier = modifier
                 .fillMaxSize()
                 .padding(0.dp)
-                .background(Color(0xFF2196F3)),
+                .background(Color(0xA8FF7700)),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
