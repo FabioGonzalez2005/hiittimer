@@ -54,15 +54,18 @@ fun MainMenu(modifier: Modifier = Modifier) {
     var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
     val getReadyTime: Long = 10
 
+    fun reproducirMusica() {
+        // Inicializa y empieza la música de ejercicio
+        val musicaPlayer = MediaPlayer.create(context, R.raw.musica)
+        musicaPlayer.isLooping = true
+        musicaPlayer.start()
+    }
+
     // Función para detener y liberar recursos del reproductor de música.
     fun pararMusica() {
         mediaPlayer?.stop()
         mediaPlayer?.release()
         mediaPlayer = null
-    }
-    // Efecto que se ejecuta al iniciar el Composable para preparar el reproductor de música.
-    LaunchedEffect(Unit) {
-        mediaPlayer = MediaPlayer.create(context, R.raw.musica)
     }
 
     // Pantalla principal de selección de tiempos y sets.
@@ -195,7 +198,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
         //Iniciar música
         LaunchedEffect(isResting) {
             if (!isResting) {
-                mediaPlayer?.start()
+                reproducirMusica()
             }
         }
 
