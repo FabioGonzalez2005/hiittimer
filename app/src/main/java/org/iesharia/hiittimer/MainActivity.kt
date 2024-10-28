@@ -410,7 +410,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
     }
 }
 
-// Composable que representa el selector de tiempo.
+// Composable que representa el selector de los tiempos.
 @Composable
 fun TimeSelector(
     label: String,
