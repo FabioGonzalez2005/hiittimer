@@ -14,6 +14,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.media.MediaPlayer
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -202,8 +203,10 @@ fun MainMenu(modifier: Modifier = Modifier) {
         LaunchedEffect(isResting) {
             if (!isResting) {
                 reproducirMusica()
+                Log.i("DAM", "Música iniciada")
             } else {
                 pararMusica()
+                Log.i("DAM", "Música parada")
             }
         }
 

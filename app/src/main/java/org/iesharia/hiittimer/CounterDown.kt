@@ -30,13 +30,14 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
 
                 if (tiempoRestante in 1500L..4000L) {
                     mediaPlayer?.start()
+                    Log.i("DAM", "Pitido funcionando")
                 }
             }
 
             // Método que se ejecuta cuando el temporizador llega a cero
             override fun onFinish() {
                 counterState = false
-                Log.i("dam2", "Temporizador finalizado")
+                Log.i("DAM", "Temporizador finalizado")
             }
         }
     }
@@ -46,6 +47,7 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
         counterState = true
         crearCounter(tiempoRestante)
         myCounter?.start()
+        Log.i("DAM", "Temporizador iniciado")
     }
 
     // Método para cancelar el temporizador
@@ -54,6 +56,7 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
         myCounter?.cancel()
         mediaPlayer?.stop()
         mediaPlayer?.release()
+        Log.i("DAM", "Temporizador cancelado")
     }
 
 }
