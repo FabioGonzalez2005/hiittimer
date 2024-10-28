@@ -28,7 +28,7 @@ class CounterDown(var context: Context, var segundos: Int, var loquehacealhacert
                 tiempoRestante = millisUntilFinished
                 if (counterState) loquehacealhacertick(millisUntilFinished / 1000)
 
-                if (tiempoRestante in 1800L..4300L) {
+                if (tiempoRestante in 1500L..4000L) {
                     mediaPlayer?.start()
                 }
             }
