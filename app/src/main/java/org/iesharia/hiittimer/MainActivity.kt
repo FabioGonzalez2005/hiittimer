@@ -95,20 +95,22 @@ fun MainMenu(modifier: Modifier = Modifier) {
 
                 // Selector para el tiempo de ejercicio.
                 TimeSelector(
-                    label = "Tiempo de ejercicio (segundos)",
+                    label = "Tiempo de ejercicio",
                     value = exerciseTime,
                     onIncrease = { exerciseTime += 5 },
-                    onDecrease = { if (exerciseTime > 5) exerciseTime -= 5 }
+                    onDecrease = { if (exerciseTime > 5) exerciseTime -= 5 },
+
+
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // Selector para el tiempo de descanso.
                 TimeSelector(
-                    label = "Tiempo de descanso (segundos)",
+                    label = "Tiempo de descanso",
                     value = restTime,
                     onIncrease = { restTime += 5 },
-                    onDecrease = { if (restTime > 4) restTime -= 5 }
+                    onDecrease = { if (restTime > 4) restTime -= 5 },
                 )
 
                 Spacer(modifier = Modifier.height(32.dp))
@@ -417,7 +419,8 @@ fun TimeSelector(
 ) {
     //Componentes de cada configurador de tiempos
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = label)
+        Text(text = label,
+        color = Color.White, fontSize = 20.sp)
         Row(
             modifier = Modifier.padding(top = 8.dp),
             verticalAlignment = Alignment.CenterVertically
